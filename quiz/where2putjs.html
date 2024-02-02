@@ -5,7 +5,9 @@
     <title>Title</title>
     <link rel="stylesheet" href="../css/index.css">
     <script>
-        document.getElementById("demo").textContent = "A paragraph";
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("demo").textContent = "A paragraph";
+        });
         function myFunction() {
             document.getElementById("demo").textContent = "Paragraph changed after click.";
         }
@@ -20,3 +22,4 @@
 
 </body>
 </html>
+
