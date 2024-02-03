@@ -2,31 +2,43 @@ window.onload = function() {
     const list = document.getElementById('Top5');
     const inp = document.getElementById('inp');
     const btn = document.getElementById('btn');
-    list.innerHTML = '';
-
     const myHistory = [];
     const MAX_HISTORY = 5;
 
+    function updateDisplay() {
+        // Sort the array by the length of each item
+        myHistory.sort((a, b) => a.length - b.length);
+
+        // Empty the list
+        list.innerHTML = '';
+
+        // Loop through the sorted array and display all items in the list
+        for (const itemText of myHistory) {
+            const li = document.createElement('li');
+            li.textContent = itemText;
+            list.appendChild(li);
+        }
+    }
+
     btn.onclick = () => {
-    // we will only allow a term to be entered if the search input isn't empty
-      if (inp.value !== '') {
-              // empty the list so that we don't display duplicate entries
-              // the display is regenerated every time a search term is entered.
-              list.innerHTML = '';
+        const inputText = inp.value.trim();
 
-              // loop through the sorted array, and display all the search terms in the list
-              for (const itemText of myHistoryCopy) {
-                
-              }
+        // Only allow non-empty input
+        if (inputText !== '') {
+            // Add the entered text to the array
+            myHistory.push(inputText);
 
-              // If the array length is 5 or more, remove the oldest search term
-              if (myHistory.length >= MAX_HISTORY) {
-                
-              }
+            // If the array length is 5 or more, remove the oldest item
+            if (myHistory.length > MAX_HISTORY) {
+                myHistory.shift(); // Remove the first item
+            }
 
-              // empty the search input and focus it, ready for the next term to be entered
-              inp.value = '';
-              btn.focus();
-          }
+            // Update the display
+            updateDisplay();
+
+            // Clear the input box and focus it
+            inp.value = '';
+            inp.focus();
+        }
     }
 }
