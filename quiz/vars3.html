@@ -1,18 +1,18 @@
 <html>
-    <head>
-        <script>
-            // Fix all errors in the code below
-            const PI = 3.14159;
-            {
-                let radius = 5;
-                let area = PI * radius * radius;
-                PI = 3.0;
-            }
-            console.log(area);
-
-        </script>
-    </head>
-    <body>
-        <h1> A Web Page </h1>
-    </body>
+<head>
+    <script>
+        // Keep the value of PI constant
+        const PI = 3.14159;
+        let area; // Declare 'area' in a scope accessible to the console.log statement
+        {
+            let radius = 5;
+            area = PI * radius * radius;
+            // Removed the line attempting to reassign a value to PI
+        }
+        console.log(area); // Now 'area' is accessible here
+    </script>
+</head>
+<body>
+    <h1> A Web Page </h1>
+</body>
 </html>
